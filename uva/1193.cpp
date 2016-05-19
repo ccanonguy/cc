@@ -8,7 +8,7 @@ typedef vector<ii> vii;
 
 
 #define INF 1000000000
-#define EPS 1e-9
+#define EPS 1e-7
 #define fore(i, l, n) for (int i=int(l); i<n; i++)
 #define forn(i, n) fore(i, 0, n)
 #define pb push_back
@@ -17,8 +17,8 @@ typedef vector<ii> vii;
 struct Interval {
 	double left, right;
 	Interval(double left, double right) {
-		this.left = left;
-		this.right = right;
+		this->left = left;
+		this->right = right;
 	}
 
 	bool operator < (const Interval &i) const {
