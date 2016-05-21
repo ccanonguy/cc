@@ -14,10 +14,10 @@ typedef vector<ii> vii;
 #define pb push_back
 #define	mp make_pair	
 
-int n;
-double l, w;
+int n,l;
+double w;
 
-struct node {
+/*struct node {
 	int pos;
 	double x, y, r;
 	bool possible;
@@ -38,18 +38,18 @@ struct node {
 		}
 	}
 
-	bool operator < (const node &i) const {
+	/*bool operator < (const node &i) const {
 		return (i.x == x) ? (y > i.y) : (x < i.x) ;
 	}
-};
+};*/
 
-std::vector<node> sprink;
+//std::vector<node> sprink;
 
 int main() {
-	std::setprecision(10);
+	//std::setprecision(10);
 	int ca = 1;
 	while (cin >> n >> l >> w) {
-		sprink.resize(n);
+/*		sprink.resize(n);
 		forn(i,n) {
 			int p,r;
 			cin >> p >> r;
@@ -70,7 +70,7 @@ int main() {
 
 		/*forn(i, n) {
 			cout << sprink[i].x << " " << sprink[i].y << endl;
-		}*/
+		}
 
 		int j = 0, count = 0;
 		bool found = false;
@@ -118,6 +118,52 @@ int main() {
 
 		if (found) cout << count << endl;
 		else cout << -1 << endl;
+		ca++;*/
+
+		pair<double, double> sprink[n];
+		int add = 0;
+		forn (i, n) {
+			int p,r;
+			cin >> p >> r;
+			if (w < 2*r) {
+				//w /= 2.0;
+				double dsqrt = sqrt(r*r - (w/2.0)*(w/2.0));
+				sprink[add] = mp(p-dsqrt, p+dsqrt);
+				add++;
+			}
+		}
+
+		sort(sprink, sprink+add);
+		/*if (ca == 138) {
+			cout << "******************************" << endl;
+			cout << n << " " << l << " " << w;
+			forn(i,add) {
+				cout << sprink[i].first << " " << sprink[i].second << endl;
+			}
+			//break;
+		}*/
+		double pos=0;
+		int i=0, ans = 0;
+
+		while (pos < l) {
+			double newPos = pos;
+
+			while (i<add && sprink[i].first <=pos) 
+				newPos = max(newPos, sprink[i++].second);
+
+			if (fabs(newPos - pos) < EPS) break;
+
+			pos = newPos;
+
+			//cout << (double)pos << endl;
+			ans++;
+		}
+
+		if (pos < l)
+			cout << -1;
+		else 
+			cout << ans;
+		cout << endl;
 		ca++;
 	}
 }
