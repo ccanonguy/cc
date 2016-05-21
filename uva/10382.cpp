@@ -46,7 +46,7 @@ struct node {
 std::vector<node> sprink;
 
 int main() {
-	std::cout.precision(5);
+	std::setprecision(10);
 	int ca = 1;
 	while (cin >> n >> l >> w) {
 		sprink.resize(n);
@@ -77,11 +77,11 @@ int main() {
 		double leftEnd = -INF, rightEnd = INF; 
 		while (j < n) {
 			if (sprink[j].possible) {
-				if (sprink[j].x <= 0) {
+				if ((sprink[j].x + EPS) <= 0) {
 					leftEnd = sprink[j].x;
 					rightEnd = sprink[j].y;
-					while (j < n && sprink[j].x <= EPS) {
-						if (sprink[j].y > rightEnd) {
+					while (j < n && (sprink[j].x + EPS) <= 0) {
+						if (sprink[j].y > (rightEnd + EPS)) {
 							leftEnd = sprink[j].x;
 							rightEnd = sprink[j].y;
 						}
@@ -92,8 +92,8 @@ int main() {
 				else if (found) {
 					found = false;
 					double initRightEnd = rightEnd;
-					while (j < n && (sprink[j].x - initRightEnd) <= EPS) {
-						if (sprink[j].y > rightEnd) {
+					while (j < n && (sprink[j].x + EPS) <= initRightEnd) {
+						if (sprink[j].y > (rightEnd + EPS)) {
 							leftEnd = sprink[j].x;
 							rightEnd = sprink[j].y;
 							found = true;
@@ -111,10 +111,10 @@ int main() {
 			else break;
 
 			//if (ca == 260) cout << leftEnd << " " << rightEnd << " " << found;
-			if (rightEnd >= l) break;
+			if (rightEnd >= (l + EPS)) break;
 		}
 
-		if (rightEnd < l) found = false;
+		if ((rightEnd + EPS) < l) found = false;
 
 		if (found) cout << count << endl;
 		else cout << -1 << endl;
