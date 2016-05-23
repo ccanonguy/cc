@@ -24,3 +24,5 @@ int main() {
 		//sum += t[i];
 	}
 }
+
+//wrong logic
