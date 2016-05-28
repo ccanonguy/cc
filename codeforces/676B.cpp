@@ -14,46 +14,13 @@ typedef vector<ii> vii;
 #define pb push_back
 #define	mp make_pair
 
-double glasses[56] = {0};
-
-void updateGlasses(int lastIndex, int row, double last) {
-	if (glasses[lastIndex] >= 1) {
-		//cout << lastIndex+row << " ";
-		updateGlasses(lastIndex+row, row+1, last/2.0);
-		//updateGlasses(lastIndex+row + 1, row+1, last/2.0);
-	}
-	else {
-		//cout << lastIndex << " ";
-		glasses[lastIndex] += last;
-		glasses[lastIndex + 1] += last;
-	}
-}
+int n, t;
+double glasses[11][11];
 
 int main() {
-	glasses[1] = 1;
-	int n, t;
 	cin >> n >> t;
+	glasses[1][1] = t;
+	fore(i, 1, n+1) {
 
-	if (t == 0) {
-		cout << 0;
-		return 0;
 	}
-	else if (t==1) {
-		cout << 1;
-		return 0;
-	}
-	int row = log2(t);
-	int full = (row*(row+1)/2);
-
-	if (row >= n) {
-		cout << n*(n+1)/2;
-		return 0;
-	}
-	t--;
-	int start = full+1;
-	while (t--) {
-		updateGlasses(1, 1, 1.0);
-	}
-
-	fore(i, 1, 56) cout << glasses[i] << " "; 
 }
