@@ -14,21 +14,23 @@ typedef vector<ii> vii;
 #define pb push_back
 #define	mp make_pair
 
-int n, t;
-double glasses[11][11];
-
 int main() {
-	cin >> n >> t;
-	glasses[1][1] = t;
-	int ans = 0;
-	for (int i=1; i<=n; i++) {
-		for (int j=1; j<=i; j++) {
-			if (glasses[i][j] >= 1) {
-				glasses[i+1][j] += (glasses[i][j]-1)/2;
-				glasses[i+1][j+1] += (glasses[i][j]-1)/2;
-				ans++;
-			}
+	long long x;
+	cin >> x;
+	long long tens = 1, ans = 0;
+	int now = 0;
+	while(x) {
+		now = x%10;
+		if (now >=5) {
+			now = 9-now;
 		}
+		ans += tens*now;
+		x /= 10;
+		tens *= 10;
+	}
+	//cout << now;
+	if (!now) {
+		ans += tens*9/10;
 	}
 	cout << ans;
 }
