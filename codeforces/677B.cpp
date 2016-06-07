@@ -15,40 +15,26 @@ typedef vector<ii> vii;
 #define	mp make_pair
 
 int main() {
-	int n, k, h;
+	ll n, h, k;
 	cin >> n >> h >> k;
-	vi arr(n);
-	forn (i, n) cin >> arr[i];
+	ll arr[n]; 
+	forn(i, n) cin >> arr[i];
 
-	int i=0, time = 0;
-	int pot = 0;
-	/*while (i < n) {
-		int j= i+1;
-		while (j<n && (pot+arr[j]) <= h) {
-			pot += arr[j];
-			j++;
+	ll height = 0;
+	ll ans = 0;
+	forn (i, n) {
+		if ((height + arr[i]) <= h) {
+			height += arr[i];
 		}
-		if (pot >= k) pot -= k;
-		else pot = 0;
-		time++;
-		cout << i << endl;
-		i = j;
-	}*/
-
-	while (true) {
-		//if ((pot + arr[i]) <= h && i<n) {
-		while (i < n && (pot + arr[i]) <= h) {
-			pot += arr[i];
-			i++;
+		else {
+			ans++;
+			height = arr[i];
 		}
-		//}
-		//cout << pot << endl;
-		if (pot >= k) pot -= k;
-		else pot = 0;
-		//cout << i << endl;
-		time++;
-		if (i > n-1 && pot == 0) break;
+		ans += height/k;
+		height = height%k;
 	}
 
-	cout << time;
-}	
+	if (height) ans++;
+
+	cout << ans;
+}
