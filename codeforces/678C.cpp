@@ -14,10 +14,19 @@ typedef vector<ii> vii;
 #define pb push_back
 #define	mp make_pair
 
+int gcd(int a, int b) {
+    return b == 0 ? a : gcd(b, a % b);
+}
+
+
 int main() {
-	ll n, k;
-	cin >> n >> k;
-	ll ans = n/k + 1;
-	ans = ans*k;
+	ll n,a,b,p,q;
+	cin >> n >> a >> b >> p >> q;
+	ll ans = 0;
+	ll lcm = a*b/gcd(a, b);
+	ll gcdvale = n/lcm;
+	ans += p*((n/a) - gcdvale);
+	ans += q*((n/b) - gcdvale);
+	ans += (p > q) ? p*gcdvale : q*gcdvale;
 	cout << ans;
 }

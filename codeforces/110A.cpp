@@ -15,9 +15,18 @@ typedef vector<ii> vii;
 #define	mp make_pair
 
 int main() {
-	ll n, k;
-	cin >> n >> k;
-	ll ans = n/k + 1;
-	ans = ans*k;
+	ll n;
+	cin >> n;
+	string ans = "NO";
+	int l = 0;
+	while (n) {
+		if (n%10 == 4 || n%10 == 7) {
+			l++;
+		}
+		n /= 10;
+	}
+
+	if (l == 4 || l == 7)
+		ans = "YES";
 	cout << ans;
 }

@@ -12,12 +12,10 @@ typedef vector<ii> vii;
 #define fore(i, l, n) for (int i=int(l); i<n; i++)
 #define forn(i, n) fore(i, 0, n)
 #define pb push_back
-#define	mp make_pair
+#define mp make_pair
 
 int main() {
-	ll n, k;
-	cin >> n >> k;
-	ll ans = n/k + 1;
-	ans = ans*k;
-	cout << ans;
+	ll n;
+	cin >> n;
+	cout << 25;
 }

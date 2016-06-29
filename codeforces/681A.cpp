@@ -15,9 +15,19 @@ typedef vector<ii> vii;
 #define	mp make_pair
 
 int main() {
-	ll n, k;
-	cin >> n >> k;
-	ll ans = n/k + 1;
-	ans = ans*k;
-	cout << ans;
+	int n;
+	cin >> n;
+	bool found = false;
+	while(n--) {
+		string s;
+		int b, a;
+		cin >> s >> b >> a;
+		if (b >= 2400 && a > b) {
+			found = true;
+		}
+	}
+	if (found) 
+		cout << "YES";
+	else
+		cout << "NO";
 }

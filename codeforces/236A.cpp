@@ -15,9 +15,20 @@ typedef vector<ii> vii;
 #define	mp make_pair
 
 int main() {
-	ll n, k;
-	cin >> n >> k;
-	ll ans = n/k + 1;
-	ans = ans*k;
-	cout << ans;
+	char s;
+	map<char, bool> ss;
+	for (char t='a'; t <= 'z'; t++) {
+		ss[t] = false;
+	}
+	int dist = 0;
+	while (cin >> s) {
+		if (!ss[s]) {
+			dist++;
+			ss[s] = true;
+		}
+	}
+	if (dist%2)
+		cout << "IGNORE HIM!";
+	else
+		cout << "CHAT WITH HER!";
 }

@@ -15,9 +15,10 @@ typedef vector<ii> vii;
 #define	mp make_pair
 
 int main() {
-	ll n, k;
-	cin >> n >> k;
-	ll ans = n/k + 1;
-	ans = ans*k;
+	int x1, y1, x2, y2;
+	cin >> x1 >> y1 >> x2 >> y2;
+	int d1 = abs(x1 - x2), d2 = abs(y1-y2);
+	int ans = min(d1, d2);
+	ans += abs(d1-d2);
 	cout << ans;
 }

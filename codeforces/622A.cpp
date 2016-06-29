@@ -15,9 +15,13 @@ typedef vector<ii> vii;
 #define	mp make_pair
 
 int main() {
-	ll n, k;
-	cin >> n >> k;
-	ll ans = n/k + 1;
-	ans = ans*k;
-	cout << ans;
+	ll n;
+	cin >> n;
+	ll k = (sqrt(8*n + 1) - 1)/2;
+	ll vk = k*(k+1)/2;
+	vk = n-vk;
+	if (!vk)
+		cout << k;
+	else
+		cout << vk;
 }

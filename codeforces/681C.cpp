@@ -15,9 +15,10 @@ typedef vector<ii> vii;
 #define	mp make_pair
 
 int main() {
-	ll n, k;
-	cin >> n >> k;
-	ll ans = n/k + 1;
-	ans = ans*k;
-	cout << ans;
+	int n;
+	cin >> n;
+	std::vector< pair<string, int> > v;
+	while (n--) {
+
+	}
 }
