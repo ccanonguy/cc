@@ -15,20 +15,20 @@ typedef vector<ii> vii;
 #define	mp make_pair
 
 int main() {
-	int n;
-	cin >> n;
-	vi arr(n);
-	forn (i, n) cin >> arr[i];
-	sort(arr.begin(), arr.end());
-	int i = 0;
-	arr[i] = 1;
-	while (i<n) {
-		int j = i;
-		while (i+1<n && arr[i+1] == arr[i])
-			i++;
-		if (i+1 < n)
-		arr[i+1] = arr[i] + 1;
-		i++;
+	int t, x, s;
+	cin >> t >> s >> x;
+	bool isOkay = true;
+	if (x >= t) {
+		if ((x - t)%s == 0)
+			isOkay = false;
 	}
-	cout << arr[n-1] +1;
+	if (x >= (t+1+s)) {
+		if ((x - (t+1+s))%s == 0)
+			isOkay = false;
+	}
+
+	if (isOkay)
+		cout << "NO";
+	else
+		cout << "YES";
 }

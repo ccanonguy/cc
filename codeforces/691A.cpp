@@ -17,18 +17,24 @@ typedef vector<ii> vii;
 int main() {
 	int n;
 	cin >> n;
-	vi arr(n);
-	forn (i, n) cin >> arr[i];
-	sort(arr.begin(), arr.end());
-	int i = 0;
-	arr[i] = 1;
-	while (i<n) {
-		int j = i;
-		while (i+1<n && arr[i+1] == arr[i])
-			i++;
-		if (i+1 < n)
-		arr[i+1] = arr[i] + 1;
-		i++;
+	int but[n];
+	int ans = 0;
+	forn (i, n) {
+		cin >> but[i];	
+		if (but[i] == 0){
+			ans++;
+		}
 	}
-	cout << arr[n-1] +1;
+	if (n == 1) {
+		if (ans == 0) {
+			cout << "YES";
+		}
+		else 
+			cout << "NO";
+	}
+	else if (ans == 1) {
+		cout << "YES";
+	}
+	else
+		cout << "NO";
 }

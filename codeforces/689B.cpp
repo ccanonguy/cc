@@ -14,21 +14,17 @@ typedef vector<ii> vii;
 #define pb push_back
 #define	mp make_pair
 
+int n;
+int *shor;
 int main() {
-	int n;
 	cin >> n;
-	vi arr(n);
-	forn (i, n) cin >> arr[i];
-	sort(arr.begin(), arr.end());
-	int i = 0;
-	arr[i] = 1;
-	while (i<n) {
-		int j = i;
-		while (i+1<n && arr[i+1] == arr[i])
-			i++;
-		if (i+1 < n)
-		arr[i+1] = arr[i] + 1;
-		i++;
+	shor = new int[n];
+	for (int i=0; i<n; i++) {
+		cin >> shor[i];
 	}
-	cout << arr[n-1] +1;
+	cerr << 0 << " ";
+	for (int j = 2; j<=n; j++) {
+		int curPos = 1;
+		int energy = 0, curEnergy = 0;
+	}
 }

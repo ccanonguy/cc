@@ -14,21 +14,28 @@ typedef vector<ii> vii;
 #define pb push_back
 #define	mp make_pair
 
+int n, t;
+
 int main() {
-	int n;
-	cin >> n;
-	vi arr(n);
-	forn (i, n) cin >> arr[i];
-	sort(arr.begin(), arr.end());
-	int i = 0;
-	arr[i] = 1;
-	while (i<n) {
-		int j = i;
-		while (i+1<n && arr[i+1] == arr[i])
-			i++;
-		if (i+1 < n)
-		arr[i+1] = arr[i] + 1;
-		i++;
+	cin >> n >> t;
+	vi con(n-1);
+	forn(i, n-1) {
+		int x;
+		cin >> x;
+		con[i] = i+x;
 	}
-	cout << arr[n-1] +1;
+	int start = 0;
+	t--;
+	bool found = false;
+	forn (i, n) {
+		if (start == t)
+			found = true;
+		else if (start > t)
+			break;
+		start = con[start];
+	}
+	if (found)
+		cout << "YES";
+	else
+		cout << "NO";
 }

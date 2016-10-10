@@ -15,20 +15,28 @@ typedef vector<ii> vii;
 #define	mp make_pair
 
 int main() {
-	int n;
-	cin >> n;
-	vi arr(n);
-	forn (i, n) cin >> arr[i];
-	sort(arr.begin(), arr.end());
-	int i = 0;
-	arr[i] = 1;
-	while (i<n) {
-		int j = i;
-		while (i+1<n && arr[i+1] == arr[i])
-			i++;
-		if (i+1 < n)
-		arr[i+1] = arr[i] + 1;
-		i++;
+	int n, d;
+	cin >> n >> d;
+	int maxCount = 0;
+	int count = maxCount;
+	while (d--) {
+		string s;
+		cin >> s;
+		bool isAbsent = false;
+		forn (i, n) {
+			if (s[i] == '0') {
+				isAbsent = true;
+				break;
+			}
+		}
+
+		if (isAbsent)
+			count++;
+		else
+			count=0;
+
+		if (count > maxCount)
+			maxCount = count;
 	}
-	cout << arr[n-1] +1;
+	cout << maxCount;
 }
